@@ -1,21 +1,10 @@
-name: 🚀 CI Pipeline
+name: 🚀  Build and Deploy
 
 on:
   push:
-    branches: [ main, develop, 'feature/*' ]
-  pull_request:
-    branches: [ main, develop ]
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy to'
-        required: true
-        default: 'staging'
-        type: choice
-        options:
-        - staging
-        - production
-
+    branches:
+      - develop
+      - main
 env:
   IMAGE_TAG: ${{ github.sha }}
 
