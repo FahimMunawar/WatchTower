@@ -47,20 +47,16 @@ jobs:
           type=raw,value=latest,enable={{is_default_branch}}
 
     - name: Build and push Docker image
-      id: build
       uses: docker/build-push-action@v5
       with:
         context: .
         platforms: linux/amd64,linux/arm64
         push: true
-        with:
-        images: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=sha,prefix={{branch}}-
-          type=raw,value=latest,enable={{is_default_branch}}
-
+        tags: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+        build-args: |
+          BUILD_DATE=${{ github.run_started_at }}
+          VCS_REF=${{ github.sha }}
+          VERSION=${{ env.IMAGE_TAG }}
 
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
