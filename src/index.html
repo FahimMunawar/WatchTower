@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Price Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 Gold Price Tracker</h1>
+            <p>Real-time gold prices from global markets</p>
+            <div class="docker-badge">🐳 Running in Docker</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="price-card">
+                <div class="price-label">Current Gold Price</div>
+                <div class="price-display" id="priceDisplay">--</div>
+                <div class="last-updated" id="lastUpdated">Click refresh to get latest price</div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn" onclick="refreshPrice()" id="refreshBtn">
+                    🔄 Refresh Price
+                </button>
+                
+                <div class="currency-selector">
+                    <label for="currency">Currency:</label>
+                    <select id="currency" onchange="refreshPrice()">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="JPY">JPY (¥)</option>
+                        <option value="CAD">CAD (C$)</option>
+                        <option value="AUD">AUD (A$)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Fetching latest gold prices...</p>
+            </div>
+            
+            <div class="error" id="error">
+                <strong>Error:</strong> <span id="errorMessage"></span>
+            </div>
+            
+            <div class="history" id="history" style="display: none;">
+                <h3>📊 Price History</h3>
+                <div id="historyList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
