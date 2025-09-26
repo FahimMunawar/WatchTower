@@ -52,7 +52,7 @@ jobs:
         context: .
         platforms: linux/amd64,linux/arm64
         push: true
-        tags: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+        tags: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
         build-args: |
           BUILD_DATE=${{ github.run_started_at }}
           VCS_REF=${{ github.sha }}
