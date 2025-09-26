@@ -10,7 +10,7 @@ env:
 
 jobs:
 
-  # Job 3: Build & Test Docker Image
+  # Job 1: Build & Test Docker Image
   build:
     name: 🐳 Build & Test Docker
     runs-on: ubuntu-latest
